@@ -3,7 +3,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
-const Render = Matter.Render;
+
 const Constraint=Matter.Constraint;
 var treeObj, stoneObj,groundObject, launcherObject;
 var mango1,mango2,mango3,mango4,mango5,mango6,mango7,mango8,mango9,mango10,mango11,mango12;
@@ -37,15 +37,7 @@ function setup() {
 	treeObj=new tree(1050,580);
 	groundObject=new ground(width/2,600,width,20);
 	launcherObject=new launcher(stoneObj.body,{x:235,y:420})
-  var render = Render.create({
-    element: document.body,
-    engine: engine,
-    options: {
-      width: 1300,
-      height: 600,
-      wireframes: false
-    }
-  });
+ 
 	
 	Engine.run(engine);
  // Render.run(render);
@@ -127,6 +119,9 @@ function keyPressed() {
     {
       //console.log(distance);
   	  Matter.Body.setStatic(lmango.body,false);
+    }
+    else{
+      Matter.Body.setStatic(lmango.body,true);
     }
 
   }
